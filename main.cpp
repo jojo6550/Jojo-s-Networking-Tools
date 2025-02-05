@@ -108,12 +108,7 @@ class NetworkingNumeralSystem{
             vector <string> ipAddress = splitNumeral(container);
             numeralToBinary(ipAddress);
         }
-
-
-        void numeralToHexadecimal(int n){
-            //base 16
-
-        }
+        
 };
 
 
