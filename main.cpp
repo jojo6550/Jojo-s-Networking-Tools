@@ -102,6 +102,13 @@ class NetworkingNumeralSystem{
             }
         }
 
+        void mainFunctionCaller(){
+            string container;
+            cin>>container;
+            vector <string> ipAddress = splitNumeral(container);
+            numeralToBinary(ipAddress);
+        }
+
 
         void numeralToHexadecimal(int n){
             //base 16
@@ -114,6 +121,7 @@ class NetworkingNumeralSystem{
 
 
 int main(){
+    /*
     string container;
     cin>>container;
 
@@ -121,6 +129,10 @@ int main(){
 
     vector <string> ipAddress = converter.splitNumeral(container);
     converter.numeralToBinary(ipAddress);
+    */
+    NetworkingNumeralSystem converter;
+    converter.mainFunctionCaller();
+
 
 
     
