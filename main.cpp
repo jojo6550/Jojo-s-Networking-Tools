@@ -2,14 +2,15 @@
 using namespace std;
 
 
-class NetworkingNumeralSystem{
+class IPv4Converter{
     public:
-        NetworkingNumeralSystem(){
-            
+        bool isValidIPv4(const string& ip) {
+            std::regex ipv4_pattern("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
+            return std::regex_match(ip, ipv4_pattern);
         }
 
         //splits a ip address
-        vector<string> splitNumeral(string b){
+        vector<string> splitNumeral(const string& b){
 
             stringstream ss(b);
             char delimeter = '.';
@@ -22,8 +23,8 @@ class NetworkingNumeralSystem{
             cout << "Numeral split\n";
             return ipAddress;
         }
-        //splits into pieces
-        void displaySplitNumeral(vector <string> ipAddress){
+
+        void displaySplitNumeral(const vector <string>& ipAddress){
             std::cout << "Ip Address: ";
             for(auto var : ipAddress){
                 std::cout << var;
@@ -31,7 +32,7 @@ class NetworkingNumeralSystem{
         }
 
         //converts numeral to binary
-        void numeralToBinary(vector <string> ipAddress){
+        void numeralToBinary(const vector <string>& ipAddress){
             vector<string> binary;
             std::cout << "Received" << std::endl;
             for(auto var : ipAddress){
@@ -101,14 +102,25 @@ class NetworkingNumeralSystem{
                 cout << var;
             }
         }
+        
 
-        void mainFunctionCaller(){
+        void mainCaller(){
+        while (true){
+            std::cout << "Enter ipv4: ";
             string container;
             cin>>container;
-            vector <string> ipAddress = splitNumeral(container);
-            numeralToBinary(ipAddress);
+
+            if (isValidIPv4(container) == true){
+                vector <string> ipAddress = splitNumeral(container);
+                numeralToBinary(ipAddress);
+                break;
+            } else {
+                std::cout << "Invalid ipv4" << std::endl;
+                continue;
+
+                }
+            }
         }
-        
 };
 
 
@@ -125,11 +137,13 @@ int main(){
     vector <string> ipAddress = converter.splitNumeral(container);
     converter.numeralToBinary(ipAddress);
     */
-    NetworkingNumeralSystem converter;
-    converter.mainFunctionCaller();
+    IPv4Converter converter;
+    converter.mainCaller();
 
 
 
     
     return 0;
 }
+
+
