@@ -27,7 +27,7 @@ class IPv4Converter{
         void displaySplitNumeral(const vector <string>& ipAddress){
             std::cout << "Ip Address: ";
             for(auto var : ipAddress){
-                std::cout << var;
+                std::cout << " " << var;
             }
         }
 
@@ -103,6 +103,19 @@ class IPv4Converter{
             }
         }
 
+        void binaryToDecimal(const vector <string>& ipAddress){
+            vector <string> decimal;
+            vector <string> subIpAddress;
+            for (auto var: ipAddress){
+                subIpAddress.push_back(var);
+            }
+
+            for (auto var: subIpAddress){
+                cout << var << endl;
+            }
+        }
+
+
 
         void mainCaller(){
         while (true){
@@ -144,6 +157,7 @@ class IPv6Converter{
             cout <<"Ip Address: ";
             for(auto var : ipAddress){
                 cout << var;
+                cout << "Complete";
             }
         }
 
@@ -153,17 +167,13 @@ class IPv6Converter{
 
 
 int main(){
-    /*
+    IPv4Converter converter;
+    //converter.mainCaller();
     string container;
     cin>>container;
-
-    NetworkingNumeralSystem converter;
-
-    vector <string> ipAddress = converter.splitNumeral(container);
-    converter.numeralToBinary(ipAddress);
-    */
-    IPv4Converter converter;
-    converter.mainCaller();
+    vector <string> ip = converter.splitNumeral(container);
+    cout << "I work";
+    converter.binaryToDecimal(ip);
 
     return 0;
 }
