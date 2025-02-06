@@ -102,7 +102,7 @@ class IPv4Converter{
                 cout << var;
             }
         }
-        
+
 
         void mainCaller(){
         while (true){
@@ -124,6 +124,31 @@ class IPv4Converter{
 };
 
 
+class IPv6Converter{
+    public:
+        vector<string> splitNumeral(const string& b){
+
+            stringstream ss(b);
+            char delimeter = ':';
+            vector<string> ipAddress;
+            string t;
+
+            while(getline(ss,t,delimeter)){
+                ipAddress.push_back(t);
+            }
+            cout << "Numeral split\n";
+            return ipAddress;
+        }
+
+        void displaySplitNumeral(const vector <string>& ipAddress){
+            cout <<"Ip Address: ";
+            for(auto var : ipAddress){
+                cout << var;
+            }
+        }
+
+};
+
 
 
 
@@ -140,9 +165,6 @@ int main(){
     IPv4Converter converter;
     converter.mainCaller();
 
-
-
-    
     return 0;
 }
 
