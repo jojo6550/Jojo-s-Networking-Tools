@@ -1,4 +1,5 @@
 *.exe
 /build
 .gitignore
-lib/libNetworkingTools.a
+/lib
+/obj
