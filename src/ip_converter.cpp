@@ -44,6 +44,12 @@ namespace IPConverter{
         if (ipAddress.size() != 4) {
             throw std::invalid_argument("Invalid IP address. Expected 4 parts.");
         }
+        for (const auto& part : ipAddress) {
+            int value = std::stoi(part);
+            if (value < 0 || value > 255) {
+                throw std::out_of_range("IP address part out of range: " + part);
+            }
+        }
         std::vector<std::string> binary;
         std::cout << "Received" << std::endl;
         for(auto var : ipAddress){
