@@ -9,6 +9,11 @@ class IPv4Converter{
             return std::regex_match(ip, ipv4_pattern);
         }
 
+        bool isValidDecimal(const string& ip){
+            std::regex binary_regex(R"(^[01]{8}\.[01]{8}\.[01]{8}\.[01]{8}$)");
+            return std::regex_match(ip, binary_regex);
+        }
+
         //splits a ip address
         vector<string> splitNumeral(const string& b){
 
@@ -104,20 +109,20 @@ class IPv4Converter{
         }
 
         void binaryToDecimal(const vector <string>& ipAddress){
-            vector <string> decimal;
-            vector <string> subIpAddress;
+            vector <string> newIpAddress;
             for (auto var: ipAddress){
-                subIpAddress.push_back(var);
+                int decimal = stoi(var,0,2);
+                newIpAddress.emplace_back(to_string(decimal));
+                newIpAddress.emplace_back(".");
+                }
+                newIpAddress.pop_back();
+                for(auto var : newIpAddress){
+                    cout << var;
+                }
+            
             }
 
-            for (auto var: subIpAddress){
-                cout << var << endl;
-            }
-        }
-
-
-
-        void mainCaller(){
+        void ipv4Caller(){
         while (true){
             std::cout << "Enter ipv4: ";
             string container;
@@ -131,6 +136,22 @@ class IPv4Converter{
                 std::cout << "Invalid ipv4" << std::endl;
                 continue;
 
+                }
+            }
+        }
+
+        void decimalCaller(){
+            while (true){
+                std::cout << "Enter decimal: ";
+                string container;
+                cin>>container;
+                if (isValidDecimal(container) == true){
+                    vector <string> ipAddress = splitNumeral(container);
+                    binaryToDecimal(ipAddress);
+                    break;
+                } else {
+                    std::cout << "Invalid decimal" << std::endl;
+                    continue;
                 }
             }
         }
@@ -167,13 +188,36 @@ class IPv6Converter{
 
 
 int main(){
-    IPv4Converter converter;
-    //converter.mainCaller();
-    string container;
-    cin>>container;
-    vector <string> ip = converter.splitNumeral(container);
-    cout << "I work";
-    converter.binaryToDecimal(ip);
+    IPv4Converter IPv4;
+
+    //Menu
+
+    int choice = 0;
+
+    while (choice !=3){
+        cout << "\n1. Convert IPv4 Decimal to Binary" << endl;
+        cout << "\n2. Convert Binary to IPv4 Decimal" << endl;
+        cout << "\n3. Exit" << endl;
+        cin >> choice;
+
+        switch (choice){
+        case 1:
+            IPv4.ipv4Caller();
+            break;
+        
+
+        case 2:
+            IPv4.decimalCaller();
+            break;
+
+        case 3:
+            cout << "Exiting...";
+            break;
+        default:
+            cout << "Invalid choice. Please choose a valid option." << endl;
+            break;
+        }
+    }
 
     return 0;
 }
