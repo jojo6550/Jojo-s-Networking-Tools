@@ -134,20 +134,26 @@ namespace IPConverter{
     }
 
     void IPv4Converter::ipv4Caller(){
-        while (true){
-            std::cout << "Enter ipv4: ";
-            std::string container;
-            std::cin>>container;
+        try{
 
-            if (isValidIPv4(container) == true){
-                std::vector <std::string> ipAddress = splitNumeral(container);
-                numeralToBinaryConvert(ipAddress);
-                break;
-            } else {
-                std::cout << "Invalid ipv4" << std::endl;
-                continue;
+        
+            while (true){
+                std::cout << "Enter ipv4: ";
+                std::string container;
+                std::cin>>container;
 
+                if (isValidIPv4(container) == true){
+                    std::vector <std::string> ipAddress = splitNumeral(container);
+                    numeralToBinaryConvert(ipAddress);
+                    break;
+                } else {
+                    std::cout << "Invalid ipv4" << std::endl;
+                    continue;
+
+                }
             }
+        } catch (const std::exception& e) {
+            std::cerr << "Exception caught: " << e.what() << '\n';
         }
     }
 

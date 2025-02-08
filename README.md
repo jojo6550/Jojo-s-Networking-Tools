@@ -16,9 +16,11 @@ To use this library, include the `ip_converter.h` header file and link against t
 
 ```cpp
 #include "ip_converter.h"
-
+using namespace IpConverter;
 int main() {
     // Use the library here...
+    IPv4Converter ipv4;
+    ipv4.
     return 0;
 }
 

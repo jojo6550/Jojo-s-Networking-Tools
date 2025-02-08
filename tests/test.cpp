@@ -2,14 +2,9 @@
 #include <iostream>
 using namespace IPConverter;
 
-int main(){
+int test(){
     IPv4Converter IPv4;
-    try {
-        IPv4.ipv4Caller();
-    } catch (const std::exception& e) {
-        std::cerr << "Error: " << e.what() << std::endl;
-        return 1;
-    }
+
 
     //Menu
     int choice = 0;
@@ -22,7 +17,12 @@ int main(){
 
         switch (choice){
         case 1:
-            IPv4.ipv4Caller();
+            try {
+                IPv4.ipv4Caller();
+            } catch (const std::exception& e) {
+                std::cerr << "Error: " << e.what() << std::endl;
+                return 1;
+            }
             break;
         
 
