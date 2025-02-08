@@ -15,7 +15,7 @@ namespace IPConverter{
     }
 
 
-    std::vector<std::string> splitNumeral(const std::string& b){
+    std::vector<std::string> IPv4Converter::splitNumeral(const std::string& b){
 
         std::stringstream ss(b);
         char delimeter = '.';
@@ -103,7 +103,7 @@ namespace IPConverter{
         }
         binary.pop_back();
         for(auto var : binary){
-            std::cout << var << std::endl;
+            std::cout << var;
         }
     }
 
