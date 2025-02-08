@@ -6,7 +6,6 @@ int main(){
     IPv4Converter IPv4;
 
     //Menu
-
     int choice = 0;
 
     while (choice !=3){

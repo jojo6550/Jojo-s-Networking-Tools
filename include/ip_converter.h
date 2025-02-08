@@ -1,5 +1,6 @@
 // ip_converter.h
-#pragma once
+#ifndef IP_CONVERTER_H
+#define IP_CONVERTER_H
 
 #include <string>
 #include <vector>
@@ -45,3 +46,4 @@ namespace IPConverter{
 
     };
 }
+#endif
