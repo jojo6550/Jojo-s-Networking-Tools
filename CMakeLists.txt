@@ -13,6 +13,6 @@ target_include_directories(NetworkingTools PUBLIC
 )
 
 install(TARGETS NetworkingTools
-  LIBRARY DESTINATION lib
-  ARCHIVE DESTINATION lib
+  LIBRARY DESTINATION C:/Users/User/Documents/Portfolio/Networking-Tools/lib
+  ARCHIVE DESTINATION C:/Users/User/Documents/Portfolio/Networking-Tools/lib
 )
