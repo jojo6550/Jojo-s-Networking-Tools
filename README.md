@@ -4,7 +4,7 @@ A C++ library designed for Networking Admins, Engineers, etc.
 
 ## Installation
 
-To install this library, follow these steps:
+To install this library on Windows, follow these steps:
 
 1. **Clone the repository**:
    ```sh
@@ -12,18 +12,19 @@ To install this library, follow these steps:
    cd Networking-Tools
    ```
 
-2. **Build the library manually using `g++`**:
+2. **Build the library manually using `g++` (MinGW required)**:
    ```sh
    mkdir obj
    g++ -c src/*.cpp -o obj/
    ar rcs libNetworking.a obj/*.o
    ```
 
-3. **Install the library** (move headers and compiled library to standard locations):
+3. **Install the library** (move headers and compiled library to a standard location):
    ```sh
-   sudo mkdir -p /usr/local/include/NetworkingTools
-   sudo cp include/*.h /usr/local/include/NetworkingTools/
-   sudo cp libNetworking.a /usr/local/lib/
+   mkdir C:\NetworkingTools\include
+   mkdir C:\NetworkingTools\lib
+   copy include\*.h C:\NetworkingTools\include\
+   copy libNetworking.a C:\NetworkingTools\lib\
    ```
 
 ## Building with CMake
@@ -33,9 +34,9 @@ Alternatively, you can use CMake to build and install the library:
 ```sh
 mkdir build
 cd build
-cmake ..
+cmake .. -G "MinGW Makefiles"
 cmake --build .
-sudo cmake --install .
+cmake --install . --prefix C:\NetworkingTools
 ```
 
 ## Usage
@@ -45,7 +46,7 @@ To use this library, include the `ip_converter.h` header file and link against t
 ### **Compiling and Linking Manually**
 
 ```sh
-g++ -o your_program your_program.cpp -L"/usr/local/lib" -lNetworking -I"/usr/local/include/NetworkingTools"
+g++ -o your_program your_program.cpp -L"C:\\NetworkingTools\\lib" -lNetworking -I"C:\\NetworkingTools\\include"
 ```
 
 ### **Example Code**
@@ -66,15 +67,15 @@ int main() {
 After compilation, run the executable:
 
 ```sh
-./your_program
+your_program.exe
 ```
 
-For dynamic libraries (`.so` on Linux, `.dll` on Windows), ensure the library path is set:
+For dynamic libraries (`.dll` on Windows), ensure the library path is set:
 
-- **Linux/macOS**: `export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH`
-- **Windows**: Add the `.dll` path to the `PATH` environment variable.
+- **Windows**: Add the `C:\NetworkingTools\lib` path to the `PATH` environment variable:
+  ```sh
+  set PATH=C:\NetworkingTools\lib;%PATH%
+  ```
 
 ---
-
-Now your `README.md` includes detailed build, install, and run instructions using `g++` and CMake! 🚀
 
