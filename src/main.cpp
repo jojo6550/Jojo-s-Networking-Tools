@@ -1,5 +1,6 @@
-#include "headers/ip_converter.h"
+#include "../headers/ip_converter.h"
 #include <iostream>
+using namespace IPConverter;
 
 int main(){
     IPv4Converter IPv4;
