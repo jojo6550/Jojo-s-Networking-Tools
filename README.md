@@ -1,6 +1,8 @@
 # Networking Tools
 
-A C++ library designed for Networking Admins, Engineers, etc.
+
+## Overview 
+Jojo's Networking Tools is a collection of command-line tools designed to simplify network management and troubleshooting tasks. The tools are written in C++ and are designed to be fast, efficient, and easy to use.
 
 ## Installation
 
@@ -26,18 +28,6 @@ To install this library on Windows, follow these steps:
    copy include\*.h C:\NetworkingTools\include\
    copy libNetworking.a C:\NetworkingTools\lib\
    ```
-
-## Building with CMake
-
-Alternatively, you can use CMake to build and install the library:
-
-```sh
-mkdir build
-cd build
-cmake .. -G "MinGW Makefiles"
-cmake --build .
-cmake --install . --prefix C:\NetworkingTools
-```
 
 ## Usage
 
