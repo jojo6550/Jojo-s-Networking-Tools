@@ -1,9 +1,15 @@
-#include "../headers/ip_converter.h"
+#include "../include/ip_converter.h"
 #include <iostream>
 using namespace IPConverter;
 
 int main(){
     IPv4Converter IPv4;
+    try {
+        IPv4.ipv4Caller();
+    } catch (const std::exception& e) {
+        std::cerr << "Error: " << e.what() << std::endl;
+        return 1;
+    }
 
     //Menu
     int choice = 0;

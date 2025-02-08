@@ -1,14 +1,13 @@
 # Networking Tools
 
-A C++ library for networking tools.
+A C++ library designed for for Networking Admins, Engineers etc.
 
 ## Installation
 
 To install this library, follow these steps:
 
 1. Clone the repository: `git clone https://github.com/your-username/NetworkingTools.git`
-2. Build the library: `cmake . && make`
-3. Install the library: `sudo make install`
+2. Build and install the library: `mkdir build; cd build; cmake ..; cmake --build .; cmake --install .`
 
 ## Usage
 
@@ -21,4 +20,5 @@ int main() {
     // Use the library here...
     return 0;
 }
+
 ```

@@ -5,8 +5,12 @@
 
 namespace IPConverter{
     bool IPv4Converter::isValidIPv4(const std::string& ip) {
-        std::regex ipv4_pattern("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
-        return std::regex_match(ip, ipv4_pattern);
+        try {
+            std::regex ipv4_pattern("^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
+            return std::regex_match(ip, ipv4_pattern);
+        } catch (const std::regex_error& e) {
+            throw std::runtime_error(std::string("Error parsing IP address: ") + e.what());
+        }
     }
 
     bool IPv4Converter::isValidDecimal(const std::string& ip){
@@ -37,6 +41,9 @@ namespace IPConverter{
     }
 
     void IPv4Converter::numeralToBinaryConvert(const std::vector<std::string>& ipAddress) {
+        if (ipAddress.size() != 4) {
+            throw std::invalid_argument("Invalid IP address. Expected 4 parts.");
+        }
         std::vector<std::string> binary;
         std::cout << "Received" << std::endl;
         for(auto var : ipAddress){
