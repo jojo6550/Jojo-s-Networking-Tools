@@ -69,3 +69,59 @@ For dynamic libraries (`.dll` on Windows), ensure the library path is set:
 
 ---
 
+## Configuring VS Code for This Project
+
+If you encounter include errors in VS Code, update your `includePath` in `c_cpp_properties.json`:
+
+1. Open VS Code and press:
+   ```
+   Ctrl + Shift + P → "C/C++: Edit Configurations (UI)"
+   ```
+2. Locate `"includePath"` and add:
+   ```json
+   "includePath": [
+       "C:/NetworkingTools/include",
+       "${workspaceFolder}/**"
+   ]
+   ```
+3. Save the file and restart VS Code.
+
+Alternatively, manually edit `.vscode/c_cpp_properties.json` with the correct paths.
+
+## Setting Up a Build Task in VS Code
+
+To automate compilation and linking in VS Code, create a `tasks.json` file inside `.vscode/` with the following content:
+
+```json
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build Networking Tools Program",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-o",
+                "your_program",
+                "your_program.cpp",
+                "-L",
+                "C:\\NetworkingTools\\lib",
+                "-lNetworking",
+                "-I",
+                "C:\\NetworkingTools\\include"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"],
+            "detail": "Compiles and links your program with the NetworkingTools library"
+        }
+    ]
+}
+```
+
+### **How to Use It:**
+1. Place the file inside **`.vscode/tasks.json`** in your project directory.
+2. Open **VS Code**.
+3. Press **`Ctrl + Shift + B`** to build the project using this task.
