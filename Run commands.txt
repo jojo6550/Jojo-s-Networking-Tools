@@ -1,0 +1,5 @@
+g++ -o "IPConverter" src/*.cpp -I include  // Compile into executable
+
+g++ -o your_program your_program.cpp -L"C:\\NetworkingTools\\lib" -lNetworking -I"C:\\NetworkingTools\\include" //Compile using library
+
+mkdir obj --> g++ -c src/*.cpp -o obj/ --> ar rcs libNetworking.a obj/*.o // Create library
