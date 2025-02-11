@@ -6,8 +6,9 @@
 			"label": "C/C++: g++.exe build active file",
 			"command": "g++",
 			"args": [
-				"-o", "IPConverter",
-			"src/*.cpp",
+				"-o", "../IPConverter",
+			"../src/*.cpp",
+			"-I include"
 			],
 			"options": {
 				"cwd": "${fileDirname}"
