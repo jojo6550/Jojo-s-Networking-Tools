@@ -18,13 +18,12 @@
          return std::regex_match(ip, binary_regex);
      }
 
-     std::vector<std::string> IPv4Converter::splitNumeral(const std::string& b){
-         std::stringstream ss(b);
-         char delimeter = '.';
+     std::vector<std::string> IPv4Converter::splitNumeral(const std::string& ip, const char& delim){
+         std::stringstream ss(ip);
          std::vector<std::string> ipAddress;
          std::string t;
  
-         while(getline(ss,t,delimeter)){
+         while(getline(ss,t,delim)){
              ipAddress.push_back(t);
          }
          std::cout << "Numeral split\n";
@@ -141,7 +140,7 @@
                  std::cin>>container;
  
                  if (isValidIP(container) == true){
-                     std::vector <std::string> ipAddress = splitNumeral(container);
+                     std::vector <std::string> ipAddress = splitNumeral(container, '.');
                      numeralToBinaryConvert(ipAddress);
                      break;
                  } else {
@@ -161,7 +160,7 @@
              std::string container;
              std::cin>>container;
              if (isValidDecimal(container) == true){
-                 std::vector <std::string> ipAddress = splitNumeral(container);
+                 std::vector <std::string> ipAddress = splitNumeral(container, '.');
                  binaryToNumeralConvert(ipAddress);
                  break;
              } else {
@@ -189,9 +188,17 @@
         return ipv4Converter.isValidDecimal(ip);
     }
 
-    std::vector<std::string> IPv6Converter::splitNumeral(const std::string& ip) {
-        // Implement the logic to split an IPv6 address into its parts
-        return {};
+    std::vector<std::string> IPv6Converter::splitNumeral(const std::string& ip, const char& delim) {
+        std::stringstream ss(ip);
+        std::vector<std::string> ipAddress;
+        std::string t;
+
+        while(getline(ss,t,delim)){
+            ipAddress.push_back(t);
+        }
+        std::cout << "Numeral split\n";
+        return ipAddress;
+
     }
 
     void IPv6Converter::displaySplitNumeral(const std::vector<std::string>& ipAddress) {
@@ -217,7 +224,7 @@
                 std::cin>>container;
 
                 if (isValidIP(container) == true){
-                    std::vector <std::string> ipAddress = splitNumeral(container);
+                    std::vector <std::string> ipAddress = splitNumeral(container, ':');
                     numeralToBinaryConvert(ipAddress);
                     break;
                 } else {
